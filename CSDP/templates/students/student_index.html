@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="col-md-12">
+    <div class="col-md-2 ml-0 pl-0 mb-2 float-left" id="ButtonAction">
+        <div class="dropdown">
+            <button class="btn bg-custom1 text-light dropdown-toggle" type="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                All Students
+            </button>
+
+        </div>
+    </div> <!-- All teacher filter dropdown -->
+    <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Semester</th>
+            <th scope="col">Contact</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+          <tr>
+            <th scope="row"><a class="text-dark" href="{% url 'students:student_detail' student.student_id %}">
+                {{ student.student_id }}
+            </a></th>
+            <td><a href="{% url 'students:student_detail' student.student_id %}" class="text-dark">
+                {{ student.name }}
+            </a></td>
+            <td><a href="{% url 'students:student_detail' student.student_id %}" class="text-dark">
+                {{ student.semester}}
+            </a></td>
+            <td><a href="{% url 'students:student_detail' student.student_id %}" class="text-dark">
+                {{ student.phone }}
+            </a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      </div>
+
+        {% endblock %}
+

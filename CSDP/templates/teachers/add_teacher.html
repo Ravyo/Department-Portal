@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="col-md-12 p-4 border">
+    <div class="row">
+        <div class="col-md-8">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Create" class="btn bg-custom1">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

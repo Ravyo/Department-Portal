@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+
+<div class="col-md-4">
+    <div class="row">
+        <div class="col-md-12 m-0 p-0 rounded" style="border-top: 3px solid #c7004c;">
+            <div class="card">
+                <div class="card-body text-center">
+                    <img class="rounded-circle border" src="{{ details.image.url }}" height="100" width="100">
+                    <h4>{{ pupil.name }}</h4>
+                    <p class="text-muted"></p>
+                    <!-- Buttons -->
+                    <div style="padding:0 21%;">
+                    <a href="#" class="btn bg-custom1 float-left">Bio</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Instructor About Card -->
+    <div class="row mt-2">
+        <div class="col-md-12 m-0 p-0">
+            <div class="card">
+                <div class="card-header">
+                    <h5>About {{ pupil.name }}</h5>
+                </div>
+                <div class="card-body">
+                    {{ details.shortBio }}
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <span class="font-weight-bold float-left">Gender:</span>
+                        <span class="float-right">{{ details.gender }}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="font-weight-bold float-left">Age:</span>
+                        <span class="float-right">{{ studentAge }}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="font-weight-bold float-left">Mobile No.</span>
+                        <span class="float-right">{{pupil.phone }}
+                    </li>
+                    <li class="list-group-item">
+                        <span class="font-weight-bold float-left">Email ID :</span>
+                        <span class="float-right">{{ details.email }}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="font-weight-bold float-left">Address :</span>
+                        <span class="float-right">{{ details.Address }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Student Main -->
+<div class="col-md-8">
+    <div class="card">
+        <div class="card-header">
+            <h4>{{ pupil.name }}: <span class="text-muted">{{ pupil.roll }}</span></h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-borderless" border="1">
+                <thead>
+                    <tr>
+                        <th scope="col">Registration</th>
+                        <th scope="col">Roll no</th>
+                        <th scope="col">Semester</th>
+                        <th scope="col">Section</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ pupil.registration }}</td>
+                        <td>{{ pupil.roll }}</td>
+                        <td >{{ pupil.semester }}</td>
+                        <td >{{ pupil.section }}</td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <div class="describe">
+                <p><b>Description </b></p>
+                <p>
+                    {{ details.description }}
+                </p>
+            </div>
+            <hr>
+            <div class="education">
+                <h4>Education</h4>
+                <table border="2">
+                    <tr>
+                    <th >Institute Name</th>
+                    <th >Qualification</th>
+                        <th>Percentage</th>
+                    <th>Year of Completion</th>
+                    </tr>
+
+
+                   <tr>{% for qualification in qualifications%}
+
+
+                    <td align="center" >{{ qualification.instituteName }}</td>
+                    <td align="center"> {{ qualification.Qualification }}</td>
+                    <td align="center">{{ qualification.Percentage }}</td>
+                    <td align="center">{{ qualification.yearCompleted }}</td>
+
+
+                    </tr>{% endfor%}
+                    <tr>
+
+
+                    <td align="center" >{{ qualificationsn.instituteName }}</td>
+                    <td align="center"> {{ qualificationsn.Qualification }}</td>
+                    <td align="center">{{ qualificationsn.Percentage }}</td>
+                    <td align="center">{{ qualificationsn.yearCompleted }}</td>
+
+
+                    </tr>
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+<div class="fixed-bottom p-4 float-right">
+    <a href="{% url 'students:studentshome' %}" class="btn bg-custom1 float-right">
+        <i class="fas fa-backward"></i>
+        Back</a>
+</div>
+{% endblock %}
